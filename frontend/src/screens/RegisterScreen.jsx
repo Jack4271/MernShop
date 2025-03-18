@@ -52,7 +52,7 @@ const RegisterScreen = () => {
     < FormContainer>
         <h1>Sign Up</h1>
 
-        <Form onSumbit={submitHandler}>
+        <Form onSubmit={submitHandler}>
         <Form.Group controlId='name' className='my-3'>
                 <Form.Label>Name</Form.Label>
                 <Form.Control 

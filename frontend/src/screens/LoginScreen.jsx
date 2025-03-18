@@ -45,7 +45,7 @@ const LoginScreen = () => {
     < FormContainer>
         <h1>Sign In</h1>
 
-        <Form onSumbit={submitHandler}>
+        <Form onSubmit={submitHandler}>
             <Form.Group controlId='email'>
                 <Form.Label>Enter email</Form.Label>
                 <Form.Control 
