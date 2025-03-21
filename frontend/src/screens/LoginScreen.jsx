@@ -54,7 +54,7 @@ const LoginScreen = () => {
                     placeholder='Enter email'
                     valve={email}
                     onChange={(e) => setEmail(e.target.value)}>
-
+                        
                 </Form.Control>
             </Form.Group>
 
@@ -72,15 +72,14 @@ const LoginScreen = () => {
             disabled={isLoading}>
                 Sign In 
             </Button>
-
-            { isLoading && <Loader />}
-            <Row className='py-3'>
-                <Col >
-                    New Customer? <Link to={ redirect ? `/register?redirect=${redirect}` : '/register'}>Register</Link>
-                </Col>
-            </Row>
         </Form>
-
+        
+        { isLoading && <Loader />}
+        <Row className='py-3'>
+            <Col >
+                New Customer? <Link to={ redirect ? `/register?redirect=${redirect}` : '/register'}>Register</Link>
+            </Col>
+        </Row>
     </FormContainer>
   )
 }

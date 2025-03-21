@@ -97,13 +97,13 @@ const RegisterScreen = () => {
                 Register
             </Button>
 
-            { isLoading && <Loader />}
-            <Row className='py-3'>
-                <Col >
-                    Already have an account{' '} <Link to={ redirect ? `/login?redirect=${redirect}` : '/login'}>Login</Link>
-                </Col>
-            </Row>
         </Form>
+        { isLoading && <Loader />}
+        <Row className='py-3'>
+            <Col >
+                Already have an account{' '} <Link to={ redirect ? `/login?redirect=${redirect}` : '/login'}>Login</Link>
+            </Col>
+        </Row>
 
     </FormContainer>
   )
