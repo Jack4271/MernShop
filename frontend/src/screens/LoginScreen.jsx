@@ -32,6 +32,7 @@ const LoginScreen = () => {
 
     const submitHandler = async (e) => {
         e.preventDefault();
+        console.log('submit')
         try {
             const res = await login({email, password}.unwrap());
             dispatch(setCredentials({...res,}));
@@ -46,28 +47,28 @@ const LoginScreen = () => {
         <h1>Sign In</h1>
 
         <Form onSubmit={submitHandler}>
-            <Form.Group controlId='email'>
+            <Form.Group controlId='email' className='my-3'>
                 <Form.Label>Enter email</Form.Label>
                 <Form.Control 
                     type='email'
                     placeholder='Enter email'
                     valve={email}
-                    onClick={(e) => setEmail(e.target.value)}>
+                    onChange={(e) => setEmail(e.target.value)}>
 
                 </Form.Control>
             </Form.Group>
 
-            <Form.Group controlId='password'>
+            <Form.Group controlId='password' className='my-3'>
                 <Form.Label> password</Form.Label>
                 <Form.Control 
                     type='password'
                     placeholder='Enter password'
                     valve={password}
-                    onClick={(e) => setPassword(e.target.value)}>
+                    onChange={(e) => setPassword(e.target.value)}>
                 </Form.Control>
             </Form.Group>
 
-            <Button type='submit' variant='primary' className='mt-2'
+            <Button  type='submit' variant='primary' className='mt-2' 
             disabled={isLoading}>
                 Sign In 
             </Button>

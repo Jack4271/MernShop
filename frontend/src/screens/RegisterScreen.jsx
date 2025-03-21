@@ -59,7 +59,7 @@ const RegisterScreen = () => {
                     type='text'
                     placeholder='Enter name'
                     valve={name}
-                    onClick={(e) => setName(e.target.value)}>
+                    onChange={(e) => setName(e.target.value)}>
                 </Form.Control>
             </Form.Group>
             <Form.Group controlId='email' className='my-3'>
@@ -68,7 +68,7 @@ const RegisterScreen = () => {
                     type='email'
                     placeholder='Enter email'
                     valve={email}
-                    onClick={(e) => setEmail(e.target.value)}>
+                    onChange={(e) => setEmail(e.target.value)}>
                 </Form.Control>
             </Form.Group>
 
@@ -78,7 +78,7 @@ const RegisterScreen = () => {
                     type='password'
                     placeholder='Enter password'
                     valve={password}
-                    onClick={(e) => setPassword(e.target.value)}>
+                    onChange={(e) => setPassword(e.target.value)}>
                 </Form.Control>
             </Form.Group>
 
@@ -88,7 +88,7 @@ const RegisterScreen = () => {
                     type='password'
                     placeholder='Confirm password'
                     valve={confirmPassword}
-                    onClick={(e) => setConfirmPassword(e.target.value)}>
+                    onChange={(e) => setConfirmPassword(e.target.value)}>
                 </Form.Control>
             </Form.Group>
 
