@@ -32,15 +32,16 @@ const LoginScreen = () => {
 
     const submitHandler = async (e) => {
         e.preventDefault();
-        console.log('submit')
+
         try {
-            const res = await login({email, password}.unwrap());
-            dispatch(setCredentials({...res,}));
+            const res = await login({email, password }).unwrap();
+            dispatch(setCredentials({ ...res }));
             navigate(redirect);
         } catch (err) {
-            toast.error(err?.data?.message || err.error);
+            toast.error(err?.data?.message || err.error)
         }
-    }
+     
+    };
 
   return (
     < FormContainer>

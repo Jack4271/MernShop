@@ -37,16 +37,16 @@ const RegisterScreen = () => {
         if (password !== confirmPassword) {
             toast.error('Password do not match');
             return;
-        } else {
+        } else{
             try {
-                const res = await register({name, email, password}.unwrap());
-                dispatch(setCredentials({...res,}));
+                const res = await register({ name, email, password }).unwrap();
+                dispatch(setCredentials({ ...res }));
                 navigate(redirect);
             } catch (err) {
-                toast.error(err?.data?.message || err.error);
+                toast.error(err?.data?.message);
             }
-        }    
-    }
+        }
+    };
 
   return (
     < FormContainer>
@@ -92,8 +92,8 @@ const RegisterScreen = () => {
                 </Form.Control>
             </Form.Group>
 
-            <Button type='submit' variant='primary' className='mt-2'
-            disabled={isLoading}>
+            <Button type='submit'variant='primary' className='mt-2'
+            disabled={isLoading} >
                 Register
             </Button>
 
