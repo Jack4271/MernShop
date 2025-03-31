@@ -21,13 +21,13 @@ const Header = () => {
         dispatch(logout());
         navigate('/login');
       } catch (err) {
-        console.log(err);
+        console.error(err);
       }
     };
 
   return (
     <header>
-        <Navbar bg="dark" variant="dark" expand="lg" collapseOnSelect>
+        <Navbar bg="warning" variant="dark" expand="lg" collapseOnSelect>
            <Container>
               <LinkContainer to='/'>
                 <Navbar.Brand to='/'>Mernshop</Navbar.Brand>
