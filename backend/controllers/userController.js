@@ -62,8 +62,8 @@ const registerUser= asyncHandler(async (req, res) => {
 // @desc   Logout user/ clear cookie
 // @route  Post /api/users/logout
 // @access Private
-const logoutUser= asyncHandler(async (req, res) => {
-    res.cookie(' jwt ', '', {
+const logoutUser = asyncHandler(async (req, res) => {
+    res.cookie('jwt', '', {
         httpOnly: true,
         expires: new Date(0)
     });

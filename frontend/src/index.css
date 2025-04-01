@@ -26,4 +26,9 @@ code {
   padding-left: 0.5rem;
 }
 
+table td,
+table th {
+  text-align: center;
+}
+
 
