@@ -55,21 +55,21 @@ const ProfileScreen = () => {
       };
   
     return (
-      <Row>
+    <Row>
         <Col md={3}>
           <h2>User Profile</h2>
   
-          <Form onSubmit={submitHandler}>
-            <Form.Group className='my-2' controlId='name'>
-              <Form.Label>Name</Form.Label>
-              <Form.Control
-                type='name'
-                placeholder='Enter name'
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-              ></Form.Control>
+            <Form onSubmit={submitHandler}>
+            <Form.Group className='my-2' controlId='name'>  
+                <Form.Label>Name</Form.Label>
+                <Form.Control
+                  type='text'   
+                  placeholder='Enter name'
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                ></Form.Control>
             </Form.Group>
-  
+            
             <Form.Group className='my-2' controlId='email'>
               <Form.Label>Email Address</Form.Label>
               <Form.Control

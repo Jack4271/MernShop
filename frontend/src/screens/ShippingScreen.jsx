@@ -13,21 +13,23 @@ const ShippingScreen = () => {
   const [address, setAddress] = useState(shippingAddress?.address ||' ');
   const [city, setCity] = useState(shippingAddress?.City ||'');
   const [postalCode, setPostalCode] = useState(shippingAddress?.postalcode ||'');
-  const [country, setCountry] = useState(shippingAddress?.country ||'');
+  const [phone, setPhone] = useState(shippingAddress?.phone||'');
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const submitHandler = (e) => {
     e.preventDefault();
-    dispatch(saveShippingAddress({ address, city, postalCode, country }));
+    dispatch(saveShippingAddress({ address, city, postalCode, phone}));
     navigate('/payment');
   };
 
   return (
+  
     <FormContainer>
       <CheckoutSteps step1 step2 />
       <h1>Shipping</h1>
+      <h6 class="text-warning">All </h6>
       <Form onSubmit={submitHandler}>
         <Form.Group className='my-2' controlId='address'>
           <Form.Label>Address</Form.Label>
@@ -62,14 +64,14 @@ const ShippingScreen = () => {
           ></Form.Control>
         </Form.Group>
 
-        <Form.Group className='my-2' controlId='country'>
-          <Form.Label>Country</Form.Label>
+        <Form.Group className='my-2' controlId='phone'>
+          <Form.Label>Phone Number</Form.Label>
           <Form.Control
             type='text'
-            placeholder='Enter country'
-            value={country}
+            placeholder='Phone Number'
+            value={phone}
             required
-            onChange={(e) => setCountry(e.target.value)}
+            onChange={(e) => setPhone(e.target.value)}
           ></Form.Control>
         </Form.Group>
 

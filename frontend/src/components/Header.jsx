@@ -4,7 +4,9 @@ import { FaShoppingCart, FaUser } from 'react-icons/fa';
 import { LinkContainer } from 'react-router-bootstrap';
 import { useSelector, useDispatch } from 'react-redux';
 import { useLogoutMutation } from '../slices/usersApiSlice';
+import SearchBox from './SearchBox';
 import { logout } from '../slices/authSlice';
+
 
 const Header = () => {
     const { cartItems } = useSelector(state => state.cart);
@@ -30,11 +32,12 @@ const Header = () => {
         <Navbar bg="warning" variant="dark" expand="lg" collapseOnSelect>
            <Container>
               <LinkContainer to='/'>
-                <Navbar.Brand to='/'>Mernshop</Navbar.Brand>
+                <Navbar.Brand to='/'>N'n'D Fruit'n'Veg</Navbar.Brand>
               </LinkContainer>
                 <Navbar.Toggle aria-controls='basic-navbar-nav'></Navbar.Toggle>
                 <Navbar.Collapse id='basic-navbar-nav'>
-                    <Nav className='ms-auto'>
+                  <Nav className='ms-auto'>
+                    <SearchBox />
                       <LinkContainer to='/cart'>
                         <Nav.Link ><FaShoppingCart/>Cart
                         {
