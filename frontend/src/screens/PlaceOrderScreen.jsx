@@ -33,7 +33,6 @@ const placeOrderHandler = async () => {
       shippingAddress: cart.shippingAddress,
       paymentMethod: cart.paymentMethod,
       itemsPrice: cart.itemsPrice,
-      shippingPrice: cart.shippingPrice,
       taxPrice: cart.taxPrice,
       totalPrice: cart.totalPrice,
     }).unwrap();
@@ -57,7 +56,7 @@ const placeOrderHandler = async () => {
                 {cart.shippingAddress.address}, 
                 {cart.shippingAddress.city},
                 {cart.shippingAddress.postalCode}, 
-                {cart.shippingAddress.country}
+                {cart.shippingAddress.phone}
                 </p>
             </ListGroup.Item>
 
@@ -102,25 +101,20 @@ const placeOrderHandler = async () => {
             <ListGroup.Item>
             <Row>
                 <Col>Items</Col>
-                <Col>${cart.itemsPrice}</Col>
+                <Col>£{cart.itemsPrice}</Col>
             </Row>
             </ListGroup.Item>
-            <ListGroup.Item>
-            <Row>
-                <Col>Shipping</Col>
-                <Col>${cart.shippingPrice}</Col>
-            </Row>
-            </ListGroup.Item>
+          
             <ListGroup.Item>
             <Row>
                 <Col>Tax</Col>
-                <Col>${cart.taxPrice}</Col>
+                <Col>£{cart.taxPrice}</Col>
             </Row>
             </ListGroup.Item>
             <ListGroup.Item>
             <Row>
                 <Col>Total</Col>
-                <Col>${cart.totalPrice}</Col>
+                <Col>£{cart.totalPrice}</Col>
             </Row>
             </ListGroup.Item>
             <ListGroup.Item>

@@ -9,7 +9,7 @@ import Loader from '../components/Loader';
 import {
   useGetOrderDetailsQuery,
   usePayOrderMutation,
-  useGetPaypalClientIdQuery,
+  useGetPayPalClientIdQuery,
   useDeliverOrderMutation,
 } from '../slices/ordersApiSlice';
 
@@ -29,13 +29,11 @@ const [deliverOrder, { isLoading: loadingDeliver }] = useDeliverOrderMutation();
 
 const [{ isPending }, paypalDispatch] = usePayPalScriptReducer();
 
+
 const  { userInfo }  = useSelector((state) => state.auth);
 
-const {
-  data: paypal,
-  isLoading: loadingPayPal,
-  error: errorPayPal,
-} = useGetPaypalClientIdQuery();
+const { data: paypal, isLoading: loadingPayPal, error: errorPayPal,
+} = useGetPayPalClientIdQuery();
 
 useEffect(() => {
     if (!errorPayPal && !loadingPayPal && paypal.clientId) {
@@ -125,8 +123,11 @@ useEffect(() => {
                 <strong>Address:</strong>
                 {order.shippingAddress.address}, 
                 {order.shippingAddress.city},
-                {order.shippingAddress.postalCode}, 
-                {order.shippingAddress.country}
+                {order.shippingAddress.postalCode} 
+                </p>
+                <p>
+                <strong>Phone:</strong>
+                {order.shippingAddress.phone}
                 </p>
                 {order.isDelivered ? (
                 <Message variant='success'>Delivered on {order.deliveredAt}</Message>
@@ -164,7 +165,7 @@ useEffect(() => {
                             <Link to={`/product/${item.product}`}>{item.name}</Link>
                         </Col>
                         <Col md={4}>
-                            {item.qty} x ${item.price} = ${item.qty * item.price}
+                            {item.qty} x £{item.price} = £{item.qty * item.price}
                         </Col>
                         </Row>
                     </ListGroup.Item>
@@ -186,13 +187,8 @@ useEffect(() => {
                     <Col>£{order.itemPrice}</Col>
                 </Row>
                 </ListGroup.Item>
-                <ListGroup.Item>
-                <Row>
-                    <Col>Shipping</Col>
-                    <Col>£{order.shippingPrice}</Col>
-                </Row>
-                </ListGroup.Item>
-                <ListGroup.Item>
+               
+                <ListGroup.Item> 
                 <Row>
                     <Col>Tax</Col>
                     <Col>£{order.taxPrice}</Col>
