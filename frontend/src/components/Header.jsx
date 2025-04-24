@@ -6,6 +6,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useLogoutMutation } from '../slices/usersApiSlice';
 import SearchBox from './SearchBox';
 import { logout } from '../slices/authSlice';
+import { resetCart } from '../slices/cartSlice';
 
 
 const Header = () => {
@@ -21,6 +22,7 @@ const Header = () => {
       try {
         await logoutApiCall().unwrap();
         dispatch(logout());
+        dispatch(resetCart());
         navigate('/login');
       } catch (err) {
         console.error(err);
@@ -62,7 +64,7 @@ const Header = () => {
                            <LinkContainer to='/login'>
                            <Nav.Link href='/login'><FaUser/>Sign In</Nav.Link>
                          </LinkContainer>
-                       ) };
+                       ) }
                         {
                           userInfo && userInfo.isAdmin && (
                             <NavDropdown title='Admin' id='adminmenu'>

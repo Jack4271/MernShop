@@ -29,10 +29,12 @@ const [deliverOrder, { isLoading: loadingDeliver }] = useDeliverOrderMutation();
 
 const [{ isPending }, paypalDispatch] = usePayPalScriptReducer();
 
-
 const  { userInfo }  = useSelector((state) => state.auth);
 
-const { data: paypal, isLoading: loadingPayPal, error: errorPayPal,
+const {
+  data: paypal,
+  isLoading: loadingPayPal,
+  error: errorPayPal,
 } = useGetPayPalClientIdQuery();
 
 useEffect(() => {
@@ -42,7 +44,7 @@ useEffect(() => {
           type: 'resetOptions',
           value: {
             'client-id': paypal.clientId,
-            currency: 'Pounds',
+            currency: 'GBP',
           },
         });
         paypalDispatch({ type: 'setLoadingStatus', value: 'pending' });
@@ -103,7 +105,7 @@ useEffect(() => {
   return isLoading ? (
     <Loader />
   ) : error ? (
-    <Message variant='danger'>{error}</Message>
+    <Message variant='danger'>{error?.data?.message || error.error}</Message>
   ) : (
     <>
       <h1>Order {order._id}</h1>
@@ -111,7 +113,7 @@ useEffect(() => {
         <Col md={8}>
         <ListGroup variant='flush'>
             <ListGroup.Item>
-                <h2>Shipping</h2>
+                <h2>Delivery Note</h2>
                 <p>
                 <strong>Name: </strong> {order.user.name}
                 </p>
@@ -123,10 +125,7 @@ useEffect(() => {
                 <strong>Address:</strong>
                 {order.shippingAddress.address}, 
                 {order.shippingAddress.city},
-                {order.shippingAddress.postalCode} 
-                </p>
-                <p>
-                <strong>Phone:</strong>
+                {order.shippingAddress.postalCode}, 
                 {order.shippingAddress.phone}
                 </p>
                 {order.isDelivered ? (
@@ -165,7 +164,7 @@ useEffect(() => {
                             <Link to={`/product/${item.product}`}>{item.name}</Link>
                         </Col>
                         <Col md={4}>
-                            {item.qty} x £{item.price} = £{item.qty * item.price}
+                            {item.qty} x ${item.price} = ${item.qty * item.price}
                         </Col>
                         </Row>
                     </ListGroup.Item>
@@ -187,8 +186,8 @@ useEffect(() => {
                     <Col>£{order.itemPrice}</Col>
                 </Row>
                 </ListGroup.Item>
-               
-                <ListGroup.Item> 
+                
+                <ListGroup.Item>
                 <Row>
                     <Col>Tax</Col>
                     <Col>£{order.taxPrice}</Col>
@@ -208,7 +207,7 @@ useEffect(() => {
                     {isPending ? (
                         <Loader />
                     ) : (
-                        <div>
+                      <div>
                         <Button style={{ marginBottom: '10px' }} onClick={onApproveTest}>
                             Test Pay Order
                         </Button>
@@ -219,7 +218,7 @@ useEffect(() => {
                             onError={onError}
                             ></PayPalButtons>
                         </div>
-                        </div>
+                      </div>
                     )}
                     </ListGroup.Item>
                     )
