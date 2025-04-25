@@ -62,6 +62,7 @@ useEffect(() => {
       try {
         await payOrder({ orderId, details });
         refetch();
+        await payOrder({ orderId, details }).unwrap();
         toast.success('Order is paid');
       } catch (err) {
         toast.error(err?.data?.message || err.error);
