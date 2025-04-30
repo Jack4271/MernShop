@@ -3,7 +3,7 @@ import { Table, Button } from 'react-bootstrap';
 import { FaTrash, FaEdit, FaCheck, FaTimes } from 'react-icons/fa';
 import { toast } from 'react-toastify';
 import Message from '../components/Message';
-import Loader from '../components/Loader';
+import Loader from '../components/Loader.jsx';
 import { useGetUsersQuery, useDeleteUserMutation, } from '../slices/usersApiSlice';
 
 const UserListScreen = () => {
