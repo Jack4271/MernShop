@@ -5,7 +5,7 @@ import {  Row, Col, Image, ListGroup, Button, Card, Form } from "react-bootstrap
 import { useDispatch, useSelector  } from "react-redux";
 import { toast } from 'react-toastify';
 import Rating from "../components/Rating";
-import Loader from "../components/Loader.jsx";
+import Loader from "../components/Loader";
 import Message from "../components/Message";
 import { useGetProductDetailsQuery, useCreateReviewMutation, } from "../slices/productsApiSlice";
 import { addToCart } from "../slices/cartSlice";

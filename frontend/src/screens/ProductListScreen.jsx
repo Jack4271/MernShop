@@ -4,7 +4,7 @@ import { FaEdit, FaPlus, FaTrash } from 'react-icons/fa';
 import { useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import Message from '../components/Message';
-import Loader from '../components/Loader.jsx';
+import Loader from '../components/Loader';
 import { useGetProductsQuery, useCreateProductMutation,  useDeleteProductMutation, } from '../slices/productsApiSlice';
 import Paginate from '../components/Paginate';
 
